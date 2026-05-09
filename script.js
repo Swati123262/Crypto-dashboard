@@ -1,6 +1,23 @@
 // Global Initialization
 lucide.createIcons();
 
+// --- MOBILE MENU LOGIC ---
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+}
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+    });
+});
+
 // --- THEME ENGINE ---
 const themeToggle = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('hub-theme') || 'dark';
@@ -17,8 +34,10 @@ themeToggle.addEventListener('click', () => {
 
 function updateThemeUI(theme) {
     const icon = document.getElementById('theme-icon');
-    icon.setAttribute('data-lucide', theme === 'dark' ? 'moon' : 'sun');
-    lucide.createIcons();
+    if (icon) {
+        icon.setAttribute('data-lucide', theme === 'dark' ? 'moon' : 'sun');
+        lucide.createIcons();
+    }
 }
 
 // --- DASHBOARD LOGIC ---
@@ -29,7 +48,6 @@ let wishlist = JSON.parse(localStorage.getItem('myWishlist')) || [];
 let currentView = 'market';
 const marketCoins = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'ADAUSDT'];
 
-// Wait for DOM and Chart.js to be ready
 window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('liveChart')) {
         initDashboard();
@@ -46,6 +64,8 @@ function initDashboard() {
 function setupSearch() {
     const search = document.getElementById('coin-search');
     const results = document.getElementById('search-results');
+    if (!search) return;
+    
     search.addEventListener('input', async (e) => {
         const val = e.target.value.toUpperCase();
         if (val.length < 1) { results.style.display = 'none'; return; }
@@ -62,8 +82,10 @@ function setupSearch() {
 function switchCoin(symbol) {
     currentSymbol = symbol;
     document.getElementById('chart-coin-name').innerText = symbol;
-    document.getElementById('search-results').style.display = 'none';
-    document.getElementById('coin-search').value = '';
+    const results = document.getElementById('search-results');
+    if (results) results.style.display = 'none';
+    const search = document.getElementById('coin-search');
+    if (search) search.value = '';
     
     if (ws) ws.close();
     ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@ticker`);
@@ -78,7 +100,9 @@ function switchCoin(symbol) {
 
 function resetChart() {
     if (chart) chart.destroy();
-    const ctx = document.getElementById('liveChart').getContext('2d');
+    const canvas = document.getElementById('liveChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
     chart = new Chart(ctx, {
         type: 'line',
         data: { labels: [], datasets: [{ data: [], borderColor: '#6366f1', tension: 0.4, fill: true, backgroundColor: 'rgba(99, 102, 241, 0.1)', pointRadius: 0 }] },
@@ -91,6 +115,7 @@ function resetChart() {
 }
 
 function updateChart(price) {
+    if (!chart) return;
     if (chart.data.labels.length > 25) { chart.data.labels.shift(); chart.data.datasets[0].data.shift(); }
     chart.data.labels.push(""); chart.data.datasets[0].data.push(price);
     chart.update('none');

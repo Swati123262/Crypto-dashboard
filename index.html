@@ -12,11 +12,17 @@
     <div class="app-container">
         <aside class="sidebar">
             <div class="logo"><i data-lucide="zap"></i> <span>CryptoHub</span></div>
-            <nav>
-                <a href="index.html" class="nav-item active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
-                <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i> Portfolio</a>
-                <a href="about.html" class="nav-item"><i data-lucide="info"></i> About</a>
+            
+            <button id="menu-toggle" class="menu-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-item active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+                <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i> <span>Portfolio</span></a>
+                <a href="about.html" class="nav-item"><i data-lucide="info"></i> <span>About</span></a>
             </nav>
+
             <div class="theme-wrapper">
                 <button id="theme-toggle" class="theme-btn"><i data-lucide="moon" id="theme-icon"></i></button>
             </div>
@@ -29,7 +35,7 @@
                     <input type="text" id="coin-search" placeholder="Search (e.g. BTC, ETH, SOL)...">
                     <div id="search-results" class="results-dropdown"></div>
                 </div>
-                <div class="user-profile"><div class="avatar">SB</div></div>
+                <div class="user-profile"><div class="avatar">AJ</div></div>
             </header>
 
             <div class="dashboard-grid">
