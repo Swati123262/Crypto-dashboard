@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>CryptoHub | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo"><i data-lucide="zap"></i> <span>CryptoHub</span></div>
+            <nav>
+                <a href="index.html" class="nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="portfolio.html" class="nav-item active"><i data-lucide="briefcase"></i> Portfolio</a>
+                <a href="about.html" class="nav-item"><i data-lucide="info"></i> About</a>
+            </nav>
+            <div class="theme-wrapper">
+                <button id="theme-toggle" class="theme-btn"><i data-lucide="moon" id="theme-icon"></i></button>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="card">
+                <h2>My Assets</h2>
+                <div class="portfolio-summary">
+                    <div class="p-card"><span>Total Value</span><h3>$42,568.42</h3></div>
+                    <div class="p-card"><span>24h Change</span><h3 style="color:var(--positive)">+5.37%</h3></div>
+                </div>
+                <div class="coin-row"><strong>Bitcoin</strong><span>0.52 BTC</span><strong>$32,157.25</strong></div>
+                <div class="coin-row"><strong>Ethereum</strong><span>2.25 ETH</span><strong>$4,321.67</strong></div>
+                <div class="coin-row"><strong>Solana</strong><span>12.35 SOL</span><strong>$1,982.45</strong></div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

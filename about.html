@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>CryptoHub | About</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo"><i data-lucide="zap"></i> <span>CryptoHub</span></div>
+            <nav>
+                <a href="index.html" class="nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i> Portfolio</a>
+                <a href="about.html" class="nav-item active"><i data-lucide="info"></i> About</a>
+            </nav>
+            <div class="theme-wrapper">
+                <button id="theme-toggle" class="theme-btn"><i data-lucide="moon" id="theme-icon"></i></button>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="card" style="text-align: center; padding: 60px;">
+                <i data-lucide="info" style="width: 48px; height: 48px; color: var(--accent);"></i>
+                <h2 style="margin-top: 20px;">CryptoHub Terminal</h2>
+                <p style="color: var(--text-dim); margin-top: 15px;">Real-time cryptocurrency analytics powered by the Binance WebSocket API. Built for speed and accuracy.</p>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

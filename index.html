@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHub | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo"><i data-lucide="zap"></i> <span>CryptoHub</span></div>
+            <nav>
+                <a href="index.html" class="nav-item active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i> Portfolio</a>
+                <a href="about.html" class="nav-item"><i data-lucide="info"></i> About</a>
+            </nav>
+            <div class="theme-wrapper">
+                <button id="theme-toggle" class="theme-btn"><i data-lucide="moon" id="theme-icon"></i></button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="top-nav">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="coin-search" placeholder="Search (e.g. BTC, ETH, SOL)...">
+                    <div id="search-results" class="results-dropdown"></div>
+                </div>
+                <div class="user-profile"><div class="avatar">SB</div></div>
+            </header>
+
+            <div class="dashboard-grid">
+                <section class="card main-chart-card">
+                    <div class="active-coin-info">
+                        <h2 id="chart-coin-name">BTCUSDT</h2>
+                        <h3 id="chart-coin-price">Loading...</h3>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="liveChart"></canvas>
+                    </div>
+                </section>
+                <section class="card market-table">
+                    <div class="tab-group">
+                        <h3 id="view-market" class="tab active" onclick="setView('market')">Market</h3>
+                        <h3 id="view-wishlist" class="tab" onclick="setView('wishlist')">Wishlist</h3>
+                    </div>
+                    <div class="coin-list" id="coin-list"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
